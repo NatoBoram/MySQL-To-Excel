@@ -74,8 +74,8 @@ Public Class Connection
 	End Function
 
 	' Get column names from a table
-	Function SelectColumns() As List(Of String)
-		Dim DataTable = MySQLSelect("SELECT table_name FROM information_schema.tables WHERE table_schema='" + DataBase + "';")
+	Function SelectColumns(Table As String) As List(Of String)
+		Dim DataTable = MySQLSelect("select column_name from information_schema.columns where table_schema = '" + DataBase + "' and table_name = '" + Table + "';")
 		Dim Columns = New List(Of String)
 		For Each DataRow As DataRow In DataTable.Rows
 			Columns.Add(DataRow.Item(0))
@@ -85,7 +85,7 @@ Public Class Connection
 
 	' Get all tables from the database
 	Function SelectTables() As List(Of String)
-		Dim DataTable = MySQLSelect("SELECT table_name FROM information_schema.tables WHERE table_schema='" + DataBase + "';")
+		Dim DataTable = MySQLSelect("SELECT table_name FROM information_schema.tables WHERE table_schema = '" + DataBase + "';")
 		Dim Tables = New List(Of String)
 		For Each DataRow As DataRow In DataTable.Rows
 			Tables.Add(DataRow.Item(0))
@@ -102,14 +102,26 @@ Public Class Connection
 
 		' Select
 		For Each Table As String In Tables
+
+			' Table
 			Dim DataTable = MySQLSelect("SELECT * FROM " + Table + ";")
 			CSV += Table + Environment.NewLine
+
+			' Columns
+			Dim Columns As List(Of String) = SelectColumns(Table)
+			For Each Column As String In Columns
+				CSV += Column + ","
+			Next
+			CSV += Environment.NewLine
+
+			' Rows
 			For Each DataRow As DataRow In DataTable.Rows
 				For Each Item In DataRow.ItemArray
 					CSV += Item.ToString + ","
 				Next
 				CSV += Environment.NewLine
 			Next
+			CSV += Environment.NewLine
 		Next
 
 		' Return

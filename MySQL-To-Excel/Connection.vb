@@ -15,12 +15,12 @@ Public Class Connection
 	Private MySqlConnection As MySqlConnection
 
 	' Constructor
-	Public Sub New(customName As String, server As String, dataBase As String, uId As String, pwd As String)
-		Me.CustomName = customName
-		Me.Server = server
-		Me.DataBase = dataBase
-		Me.UId = uId
-		Me.Pwd = pwd
+	Sub New(CustomName As String, Server As String, DataBase As String, UId As String, Pwd As String)
+		Me.CustomName = CustomName
+		Me.Server = Server
+		Me.DataBase = DataBase
+		Me.UId = UId
+		Me.Pwd = Pwd
 		MySqlConnection = New MySqlConnection(GetConnectionString())
 	End Sub
 
@@ -30,7 +30,7 @@ Public Class Connection
 	End Function
 
 	' Update object
-	Public Sub Update()
+	Sub Update()
 		MySqlConnection.Close()
 		MySqlConnection = New MySqlConnection(GetConnectionString())
 	End Sub

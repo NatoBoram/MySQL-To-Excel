@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="MySQL-To-Excel.exe" version="1.0.0.7" publicKeyToken="75b56fd6546695b9" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="MySQL-To-Excel" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="MySQL-To-Excel.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MySql.Data.dll" size="396800">
+      <assemblyIdentity name="MySql.Data" version="6.10.4.0" publicKeyToken="C5687FC88969C44D" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>bJl0FAM9qvdtCz6hvA5cihD/NtShlSRU1oyRTkhBvrE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MySQL-To-Excel.exe" size="40384">
+      <assemblyIdentity name="MySQL-To-Excel" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>paAfphIGl2/oCWBYWLJaWSa1V89OI3fD3fbkLFiqHYc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="653824">
+      <assemblyIdentity name="Newtonsoft.Json" version="10.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>lz/XDOSOWsQzoQG0KHFoDFHi/roq7sPUAN6kEVrzong=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="docs\MySqlCommand.xml" size="33738" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>EFsKewXclTvPUETdOUw6405SHbiNbJweWlH6dR57gs0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="docs\MySqlCommandBuilder.xml" size="13933" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>V+p+it+7Y+MmCxSKd0/353IMRUpLK5R9QLQlVh4KmuI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="docs\MySqlConnection.xml" size="50933" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>4eRnMkjsQYrRea0eOGzHbpi1N8ohZkVOZErNWsWM240=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="docs\MySqlConnectionStringBuilder.xml" size="1391" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>y2SWzOwsnrrmlxNManenqoHX8Ex8UVfcuRwm/IfCmxU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="docs\MySqlDataAdapter.xml" size="35151" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>J81HacdJr9wM5S/BBdhaamhDYz/YQ3zaNsXW5pSvDb0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="docs\MySqlDataReader.xml" size="17926" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>RvzD3cc1B9V+VVEfr5fPWuwPGy4PiE/sNfN/keVvBi8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="docs\MySqlException.xml" size="1647" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>VIc+MChUY6ZhkfBn6SC+XXuTMgvSBl4Do0o7DV7vSAQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="docs\MySqlHelper.xml" size="1647" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>VIc+MChUY6ZhkfBn6SC+XXuTMgvSBl4Do0o7DV7vSAQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="docs\MySqlParameter.xml" size="1503" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>yPR4JJvsjFLWJnvSUdrGcUIQ49MUUHJvL/+RLFxVB+I=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="docs\MySqlParameterCollection.xml" size="1632" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>LcYXffpvyBvSPc73cdY5anBPKGSl8vPMZ65hPzUxa8k=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="docs\MySqlTransaction.xml" size="12022" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>UOTTJ+wUdGK+FJi6N+DmqY29vB3rhpt6IMR4Qp+PwkM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="MySQL-To-Excel.exe.config" size="585">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>QUfGGtkLuvrLiIwbT9gGFI3sSFkN+yTKZOLNoVGlBtk=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=NATOHELION\natob" issuerKeyHash="d62905da0178d5879d8d4c6bb2a5c1eeeebfdc07" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>xMudCBpl81FTR4ZQsMExU4fIL51+6gXTQ1Z5XFQ2MP0=</DigestValue></Reference></SignedInfo><SignatureValue>cVp0huw+UC39igYpdZCfBdEzF9qvoNeGzs9l4We8FXCadfua0fnhBvltM8s/4twOCSXeFV+C7O7Eos5d+FA8TAPn0OpWFwJ14NLX0ynOLJOgFD8fHVSWg0IOIkO3UFE9ATV8G9VNRt+MlYhiNBKus1d4G/gC7h1eWtywMkyF6+0=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>rprHBXSh5svIJVxQ1FxoGoI11PUt5xs9f8v/gLOx25sdDXFhLTGPyRCeNPuSm+muQhlhHaKz36ZJB1emLhvtlHN5Qk72PbGxAYLeROWSJnSUeHsB3iJo180+J5XbDeFSNnIFq1+U04rj3/OUK3yDrPA3zdQciv8WD75+N4hao4E=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="fd3036545c795643d305ea7e9d2fc8875331c1b05086475351f3651a089dcbc4" Description="" Url=""><as:assemblyIdentity name="MySQL-To-Excel.exe" version="1.0.0.7" publicKeyToken="75b56fd6546695b9" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=NATOHELION\natob</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>nMq2545Qw7SNY5HsXJvXhuCj90nPH5X6Ycz+eCapILo=</DigestValue></Reference></SignedInfo><SignatureValue>D976DRWGnan8ZAL8kqFfFoXm6KIgKOSSoTTINDd2hj4H/T9ELOLTrCd36MZH+pJlD1t3HSfdzG4BEmuCgHJ16g9+cGj4os+nXr0TapMuxm/EedRQ35LURMWXuqbXCirNa8svaRdwRVuENFgIQ1VOJEkz5ZIg477YfyxUjgpZ8bU=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>rprHBXSh5svIJVxQ1FxoGoI11PUt5xs9f8v/gLOx25sdDXFhLTGPyRCeNPuSm+muQhlhHaKz36ZJB1emLhvtlHN5Qk72PbGxAYLeROWSJnSUeHsB3iJo180+J5XbDeFSNnIFq1+U04rj3/OUK3yDrPA3zdQciv8WD75+N4hao4E=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB2TCCAUKgAwIBAgIQHBPC8Sf3e7NEvWY3uVvVkzANBgkqhkiG9w0BAQsFADArMSkwJwYDVQQDHiAATgBBAFQATwBIAEUATABJAE8ATgBcAG4AYQB0AG8AYjAeFw0xNzExMjUwOTE3MjJaFw0xODExMjUxNTE3MjJaMCsxKTAnBgNVBAMeIABOAEEAVABPAEgARQBMAEkATwBOAFwAbgBhAHQAbwBiMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCumscFdKHmy8glXFDUXGgagjXU9S3nGz1/y/+As7Hbmx0NcWEtMY/JEJ40+5Kb6a5CGWEdorPfpkkHV6YuG+2Uc3lCTvY9sbEBgt5E5ZImdJR4ewHeImjXzT4nldsN4VI2cgWrX5TTiuPf85QrfIOs8DfN1ByK/xYPvn43iFqjgQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAAmcUDsPINip03Dsyi22cT7BnzRuhiZYgCJc4yC3N2dS32TSkT3RDd/aiRDvznMgKuRqCFUWBapd/XbFRRbDVCENEe/FMNWGGyXBugIBcID6bwYQyEDcl5KZFihC1B7VFLUU0SDpQ8qmBrNXWi6VBlM5yipcFHDW1HCqlLSaoRvn</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

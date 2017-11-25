@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Deployment.Application
+Imports System.IO
 Imports Newtonsoft.Json
 
 Public Class FormMain
@@ -29,6 +30,10 @@ Public Class FormMain
 		ButtonsNew = {ButtonNewReset, ButtonNewSave, ButtonNewStart}
 
 		ReadJSON()
+
+		If (ApplicationDeployment.IsNetworkDeployed) Then
+			LabelVersion.Text = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString
+		End If
 	End Sub
 
 	' Read connections

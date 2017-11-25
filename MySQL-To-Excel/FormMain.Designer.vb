@@ -57,6 +57,7 @@ Partial Class FormMain
 		Me.ButtonNewReset = New System.Windows.Forms.Button()
 		Me.ButtonNewSave = New System.Windows.Forms.Button()
 		Me.ButtonNewStart = New System.Windows.Forms.Button()
+		Me.LabelVersion = New System.Windows.Forms.Label()
 		Me.TabControlMain.SuspendLayout()
 		Me.TabPageMain.SuspendLayout()
 		CType(Me.SplitContainerMain, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -137,6 +138,7 @@ Partial Class FormMain
 		Me.TableLayoutPanelMain.Controls.Add(Me.ButtonDelete, 1, 9)
 		Me.TableLayoutPanelMain.Controls.Add(Me.ButtonSave, 2, 9)
 		Me.TableLayoutPanelMain.Controls.Add(Me.ButtonStart, 1, 10)
+		Me.TableLayoutPanelMain.Controls.Add(Me.LabelVersion, 3, 11)
 		Me.TableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.TableLayoutPanelMain.Location = New System.Drawing.Point(0, 0)
 		Me.TableLayoutPanelMain.Name = "TableLayoutPanelMain"
@@ -479,6 +481,16 @@ Partial Class FormMain
 		Me.ButtonNewStart.Text = "SQL TO EXCEL"
 		Me.ButtonNewStart.UseVisualStyleBackColor = True
 		'
+		'LabelVersion
+		'
+		Me.LabelVersion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.LabelVersion.AutoSize = True
+		Me.LabelVersion.Location = New System.Drawing.Point(329, 348)
+		Me.LabelVersion.Name = "LabelVersion"
+		Me.LabelVersion.Size = New System.Drawing.Size(40, 13)
+		Me.LabelVersion.TabIndex = 14
+		Me.LabelVersion.Text = "0.0.0.0"
+		'
 		'FormMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -538,4 +550,5 @@ Partial Class FormMain
 	Friend WithEvents ButtonNewReset As Button
 	Friend WithEvents ButtonNewSave As Button
 	Friend WithEvents ButtonNewStart As Button
+	Friend WithEvents LabelVersion As Label
 End Class

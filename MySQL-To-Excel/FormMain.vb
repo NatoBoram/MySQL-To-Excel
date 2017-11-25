@@ -1,5 +1,7 @@
 ﻿Imports System.Deployment.Application
 Imports System.IO
+Imports System.Windows
+Imports Microsoft.Office.Interop.Excel
 Imports Newtonsoft.Json
 
 Public Class FormMain
@@ -11,16 +13,16 @@ Public Class FormMain
 	Dim File As String = "Connections.json"
 
 	' Controls
-	Dim Labels As Label()
-	Dim TextBoxes As TextBox()
-	Dim Buttons As Button()
+	Dim Labels As Forms.Label()
+	Dim TextBoxes As Forms.TextBox()
+	Dim Buttons As Forms.Button()
 
 	' Controls New
-	Dim TextBoxesNew As TextBox()
-	Dim ButtonsNew As Button()
+	Dim TextBoxesNew As Forms.TextBox()
+	Dim ButtonsNew As Forms.Button()
 
 	' Load
-	Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+	Private Sub FormMain_Load(sender As Form, e As EventArgs) Handles Me.Load
 
 		' Variables
 		TextBoxes = {TextBoxName, TextBoxServer, TextBoxDataBase, TextBoxUId, TextBoxPwd}
@@ -72,7 +74,7 @@ Public Class FormMain
 	End Sub
 
 	' Select another connection
-	Private Sub ListBoxConnections_SelectedIndexChanged(sender As ListBox, e As EventArgs) Handles ListBoxConnections.SelectedIndexChanged, ListBoxConnections.Click
+	Private Sub ListBoxConnections_SelectedIndexChanged(sender As Forms.ListBox, e As EventArgs) Handles ListBoxConnections.SelectedIndexChanged, ListBoxConnections.Click
 		If ListBoxConnections.SelectedIndex < 0 Or sender.Items.Count <> Connections.Count Then Return
 		Try
 			TextBoxName.Text = Connections(sender.SelectedIndex).CustomName
@@ -88,10 +90,10 @@ Public Class FormMain
 	End Sub
 
 	' Save editing
-	Private Sub ButtonSave_Click(sender As Button, e As EventArgs) Handles ButtonSave.Click
+	Private Sub ButtonSave_Click(sender As Forms.Button, e As EventArgs) Handles ButtonSave.Click
 
 		' Trim
-		For Each TextBox As TextBox In TextBoxes
+		For Each TextBox As Forms.TextBox In TextBoxes
 			TextBox.Text = Trim(TextBox.Text)
 		Next
 
@@ -108,14 +110,14 @@ Public Class FormMain
 	End Sub
 
 	' Delete selected connection
-	Private Sub ButtonDelete_Click(sender As Button, e As EventArgs) Handles ButtonDelete.Click
+	Private Sub ButtonDelete_Click(sender As Forms.Button, e As EventArgs) Handles ButtonDelete.Click
 		Connections.RemoveAt(ListBoxConnections.SelectedIndex)
 		ButtonManagement()
 		WriteJSON()
 	End Sub
 
 	' Start!
-	Private Sub ButtonStart_Click(sender As Button, e As EventArgs) Handles ButtonStart.Click
+	Private Sub ButtonStart_Click(sender As Forms.Button, e As EventArgs) Handles ButtonStart.Click
 		WriteCSV(New Connection(TextBoxName.Text, TextBoxServer.Text, TextBoxDataBase.Text, TextBoxUId.Text, TextBoxPwd.Text))
 		ButtonSave_Click(sender, e)
 	End Sub
@@ -124,24 +126,25 @@ Public Class FormMain
 #Region "New Tab"
 
 	' Reset
-	Private Sub ButtonNewReset_Click(sender As Button, e As EventArgs) Handles ButtonNewReset.Click
-		For Each TextBox As TextBox In TextBoxesNew
+	Private Sub ButtonNewReset_Click(sender As Forms.Button, e As EventArgs) Handles ButtonNewReset.Click
+		For Each TextBox As Forms.TextBox In TextBoxesNew
 			TextBox.Text = ""
 		Next
 	End Sub
 
 	' Save
-	Private Sub ButtonNewSave_Click(sender As Object, e As EventArgs) Handles ButtonNewSave.Click
-		For Each TextBox As TextBox In TextBoxesNew
+	Private Sub ButtonNewSave_Click(sender As Forms.Button, e As EventArgs) Handles ButtonNewSave.Click
+		For Each TextBox As Forms.TextBox In TextBoxesNew
 			TextBox.Text = Trim(TextBox.Text)
 		Next
 		Connections.Add(New Connection(TextBoxNewName.Text, TextBoxNewServer.Text, TextBoxNewDataBase.Text, TextBoxNewUId.Text, TextBoxNewPwd.Text))
 		WriteJSON()
+		MsgBox("La connexion a été correctement enregistrée.")
 		ButtonNewReset_Click(sender, e)
 	End Sub
 
 	' Start
-	Private Sub ButtonNewStart_Click(sender As Button, e As EventArgs) Handles ButtonNewStart.Click
+	Private Sub ButtonNewStart_Click(sender As Forms.Button, e As EventArgs) Handles ButtonNewStart.Click
 		ButtonNewSave_Click(sender, e)
 		WriteCSV(New Connection(TextBoxNewName.Text, TextBoxNewServer.Text, TextBoxNewDataBase.Text, TextBoxNewUId.Text, TextBoxNewPwd.Text))
 	End Sub
@@ -172,34 +175,34 @@ Public Class FormMain
 		If ListBoxConnections.Items.Count = 0 Or ListBoxConnections.SelectedIndex < 0 Then
 
 			' Disable Labels
-			For Each Label As Label In Labels
+			For Each Label As Forms.Label In Labels
 				Label.Enabled = False
 			Next
 
 			' Disable TextBoxes
-			For Each TextBox As TextBox In TextBoxes
+			For Each TextBox As Forms.TextBox In TextBoxes
 				TextBox.Enabled = False
 				TextBox.Text = ""
 			Next
 
 			' Disable Buttons
-			For Each Button As Button In Buttons
+			For Each Button As Forms.Button In Buttons
 				Button.Enabled = False
 			Next
 		Else
 
 			' Enable Labels
-			For Each Label As Label In Labels
+			For Each Label As Forms.Label In Labels
 				Label.Enabled = True
 			Next
 
 			' Enable TextBoxes
-			For Each TextBox As TextBox In TextBoxes
+			For Each TextBox As Forms.TextBox In TextBoxes
 				TextBox.Enabled = True
 			Next
 
 			' Enable Buttons
-			For Each Button As Button In Buttons
+			For Each Button As Forms.Button In Buttons
 				Button.Enabled = True
 			Next
 		End If
@@ -208,14 +211,14 @@ Public Class FormMain
 	Sub WriteCSV(Connection)
 		If Connection.Open() Then
 
-			' Comma-Separated Values
-			Dim CSV = Connection.CSVEverything()
+
+
 
 			' Where to save?
 			Dim SaveFileDialog As New SaveFileDialog With {
 				.AddExtension = True,
 				.FileName = Connections(ListBoxConnections.SelectedIndex).CustomName,
-				.Filter = "Comma-Separated Values|*.csv",
+				.Filter = "Comma-Separated Values|*.csv",'|Office Open XML|*.xlsx",
 				.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments,
 				.RestoreDirectory = True
 			}
@@ -224,9 +227,26 @@ Public Class FormMain
 			If SaveFileDialog.ShowDialog() = DialogResult.OK Then
 				Dim Stream As Stream = SaveFileDialog.OpenFile()
 				If (Stream IsNot Nothing) Then
-					Dim StreamWriter As New StreamWriter(Stream)
-					StreamWriter.WriteLine(CSV)
-					StreamWriter.Close()
+					Select Case SaveFileDialog.FilterIndex
+						Case 1
+
+							' Comma-Separated Values
+							Dim CSV = Connection.CSVEverything()
+							Dim StreamWriter As New StreamWriter(Stream)
+							StreamWriter.WriteLine(CSV)
+							StreamWriter.Close()
+
+							'Case 2
+
+							'	' Office Open XML
+							'	Dim Excel As New Application
+							'	Dim Workbook As New Workbook
+							'	Dim Worksheet As Worksheet = Connection.XLSXEverything()
+
+							'	Workbook.Worksheets.Add(Worksheet)
+							'	Workbook.SaveToStream(Stream)
+
+					End Select
 					Stream.Close()
 				End If
 			End If

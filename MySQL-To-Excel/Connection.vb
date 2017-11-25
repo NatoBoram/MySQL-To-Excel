@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports Microsoft.Office.Interop.Excel
+Imports MySql.Data.MySqlClient
 
 Public Class Connection
 
@@ -60,10 +61,10 @@ Public Class Connection
 	End Function
 
 	' Select a single table
-	Function MySQLSelect(SelectCommandText As String) As DataTable
+	Function MySQLSelect(SelectCommandText As String) As Data.DataTable
 		If Open() Then
 			Dim MySqlDataAdapter = New MySqlDataAdapter(SelectCommandText, MySqlConnection)
-			Dim DataTable As New DataTable
+			Dim DataTable As New Data.DataTable
 			MySqlDataAdapter.Fill(DataTable)
 			MySqlConnection.Close()
 			Return DataTable
@@ -104,7 +105,7 @@ Public Class Connection
 		For Each Table As String In Tables
 
 			' Table
-			Dim DataTable = MySQLSelect("SELECT * FROM " + Table + ";")
+			Dim DataTable As System.Data.DataTable = MySQLSelect("SELECT * FROM " + Table + ";")
 			CSV += Table + Environment.NewLine
 
 			' Columns
@@ -126,6 +127,50 @@ Public Class Connection
 
 		' Return
 		Return CSV
+	End Function
+
+	Function XLSXEverything() As Worksheet
+		Dim Worksheet As New Worksheet
+		Dim Tables As List(Of String) = SelectTables()
+
+		Dim X As Integer = 0
+		Dim Y As Integer = 0
+
+		' Select
+		For Each Table As String In Tables
+
+			' Table
+			X = 0
+			Y += 1
+			Worksheet.Cells(X, Y).Value = Table
+
+			' Columns
+			X = 0
+			Y += 1
+			Dim Columns As List(Of String) = SelectColumns(Table)
+			For Each Column As String In Columns
+				Worksheet.Cells(X, Y).Value = Column
+				X += 1
+			Next
+
+
+			' Rows
+			X = 0
+			Y += 1
+			Dim DataTable As System.Data.DataTable = MySQLSelect("SELECT * FROM " + Table + ";")
+			For Each DataRow As DataRow In DataTable.Rows
+				For Each Item In DataRow.ItemArray
+					Worksheet.Cells(X, Y).Value = Item
+					X += 1
+				Next
+				X = 0
+				Y += 1
+			Next
+			X = 0
+			Y += 1
+		Next
+
+		Return Worksheet
 	End Function
 
 	' ToString

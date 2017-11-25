@@ -285,13 +285,12 @@ Partial Class FormMain
 		'ButtonStart
 		'
 		Me.ButtonStart.Anchor = System.Windows.Forms.AnchorStyles.None
-		Me.ButtonStart.AutoSize = True
 		Me.TableLayoutPanelMain.SetColumnSpan(Me.ButtonStart, 2)
-		Me.ButtonStart.Location = New System.Drawing.Point(139, 298)
+		Me.ButtonStart.Location = New System.Drawing.Point(148, 298)
 		Me.ButtonStart.Name = "ButtonStart"
-		Me.ButtonStart.Size = New System.Drawing.Size(93, 23)
+		Me.ButtonStart.Size = New System.Drawing.Size(75, 23)
 		Me.ButtonStart.TabIndex = 13
-		Me.ButtonStart.Text = "SQL TO EXCEL"
+		Me.ButtonStart.Text = "Exporter"
 		Me.ButtonStart.UseVisualStyleBackColor = True
 		'
 		'TabPage2
@@ -472,13 +471,12 @@ Partial Class FormMain
 		'ButtonNewStart
 		'
 		Me.ButtonNewStart.Anchor = System.Windows.Forms.AnchorStyles.None
-		Me.ButtonNewStart.AutoSize = True
 		Me.TableLayoutPanelNew.SetColumnSpan(Me.ButtonNewStart, 2)
-		Me.ButtonNewStart.Location = New System.Drawing.Point(208, 298)
+		Me.ButtonNewStart.Location = New System.Drawing.Point(217, 298)
 		Me.ButtonNewStart.Name = "ButtonNewStart"
-		Me.ButtonNewStart.Size = New System.Drawing.Size(93, 23)
+		Me.ButtonNewStart.Size = New System.Drawing.Size(75, 23)
 		Me.ButtonNewStart.TabIndex = 13
-		Me.ButtonNewStart.Text = "SQL TO EXCEL"
+		Me.ButtonNewStart.Text = "Exporter"
 		Me.ButtonNewStart.UseVisualStyleBackColor = True
 		'
 		'LabelVersion

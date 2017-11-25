@@ -6,7 +6,7 @@ Public Class FormMain
 	Dim Version As String = "0.0.1"
 
 	' Variables
-	Dim Connections As List(Of Connection)
+	Dim Connections As New List(Of Connection)
 	Dim File As String = "Connections.json"
 
 	' Controls
@@ -35,17 +35,17 @@ Public Class FormMain
 	Sub ReadJSON()
 		Try
 			Connections = JsonConvert.DeserializeObject(Of List(Of Connection))(My.Computer.FileSystem.ReadAllText(File))
-			UpdateListBoxConnections()
 		Catch ex As Exception
 			Dim Connections As New List(Of Connection)
 			WriteJSON()
 		End Try
+		UpdateListBoxConnections()
 	End Sub
 
 	' Save connections
 	Sub WriteJSON()
 		Try
-			My.Computer.FileSystem.WriteAllText(File, JsonConvert.SerializeObject(Connections, Formatting.Indented), False)
+			My.Computer.FileSystem.WriteAllText(File, JsonConvert.SerializeObject(Connections), False)
 			UpdateListBoxConnections()
 		Catch ex As Exception
 			MsgBox(ex.Message)
@@ -57,6 +57,7 @@ Public Class FormMain
 	' Update the ListBox
 	Sub UpdateListBoxConnections()
 		ListBoxConnections.Items.Clear()
+		If Connections Is Nothing Then Return
 		For Each Connection As Connection In Connections
 			ListBoxConnections.Items.Add(Connection)
 		Next

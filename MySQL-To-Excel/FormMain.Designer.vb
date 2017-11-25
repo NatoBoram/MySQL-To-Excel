@@ -160,7 +160,7 @@ Partial Class FormMain
 		'
 		Me.LabelServer.Anchor = System.Windows.Forms.AnchorStyles.Left
 		Me.LabelServer.AutoSize = True
-		Me.LabelServer.Location = New System.Drawing.Point(88, 131)
+		Me.LabelServer.Location = New System.Drawing.Point(78, 131)
 		Me.LabelServer.Name = "LabelServer"
 		Me.LabelServer.Size = New System.Drawing.Size(44, 13)
 		Me.LabelServer.TabIndex = 1
@@ -170,7 +170,7 @@ Partial Class FormMain
 		'
 		Me.LabelDataBase.Anchor = System.Windows.Forms.AnchorStyles.Left
 		Me.LabelDataBase.AutoSize = True
-		Me.LabelDataBase.Location = New System.Drawing.Point(88, 157)
+		Me.LabelDataBase.Location = New System.Drawing.Point(78, 157)
 		Me.LabelDataBase.Name = "LabelDataBase"
 		Me.LabelDataBase.Size = New System.Drawing.Size(90, 13)
 		Me.LabelDataBase.TabIndex = 2
@@ -180,7 +180,7 @@ Partial Class FormMain
 		'
 		Me.LabelUId.Anchor = System.Windows.Forms.AnchorStyles.Left
 		Me.LabelUId.AutoSize = True
-		Me.LabelUId.Location = New System.Drawing.Point(88, 183)
+		Me.LabelUId.Location = New System.Drawing.Point(78, 183)
 		Me.LabelUId.Name = "LabelUId"
 		Me.LabelUId.Size = New System.Drawing.Size(53, 13)
 		Me.LabelUId.TabIndex = 3
@@ -190,7 +190,7 @@ Partial Class FormMain
 		'
 		Me.LabelPwd.Anchor = System.Windows.Forms.AnchorStyles.Left
 		Me.LabelPwd.AutoSize = True
-		Me.LabelPwd.Location = New System.Drawing.Point(88, 209)
+		Me.LabelPwd.Location = New System.Drawing.Point(78, 209)
 		Me.LabelPwd.Name = "LabelPwd"
 		Me.LabelPwd.Size = New System.Drawing.Size(71, 13)
 		Me.LabelPwd.TabIndex = 4
@@ -198,34 +198,34 @@ Partial Class FormMain
 		'
 		'TextBoxServer
 		'
-		Me.TextBoxServer.Anchor = System.Windows.Forms.AnchorStyles.Left
-		Me.TextBoxServer.Location = New System.Drawing.Point(184, 128)
+		Me.TextBoxServer.Anchor = System.Windows.Forms.AnchorStyles.None
+		Me.TextBoxServer.Location = New System.Drawing.Point(174, 128)
 		Me.TextBoxServer.Name = "TextBoxServer"
-		Me.TextBoxServer.Size = New System.Drawing.Size(100, 20)
+		Me.TextBoxServer.Size = New System.Drawing.Size(120, 20)
 		Me.TextBoxServer.TabIndex = 6
 		'
 		'TextBoxDataBase
 		'
-		Me.TextBoxDataBase.Anchor = System.Windows.Forms.AnchorStyles.Left
-		Me.TextBoxDataBase.Location = New System.Drawing.Point(184, 154)
+		Me.TextBoxDataBase.Anchor = System.Windows.Forms.AnchorStyles.None
+		Me.TextBoxDataBase.Location = New System.Drawing.Point(174, 154)
 		Me.TextBoxDataBase.Name = "TextBoxDataBase"
-		Me.TextBoxDataBase.Size = New System.Drawing.Size(100, 20)
+		Me.TextBoxDataBase.Size = New System.Drawing.Size(120, 20)
 		Me.TextBoxDataBase.TabIndex = 7
 		'
 		'TextBoxUId
 		'
-		Me.TextBoxUId.Anchor = System.Windows.Forms.AnchorStyles.Left
-		Me.TextBoxUId.Location = New System.Drawing.Point(184, 180)
+		Me.TextBoxUId.Anchor = System.Windows.Forms.AnchorStyles.None
+		Me.TextBoxUId.Location = New System.Drawing.Point(174, 180)
 		Me.TextBoxUId.Name = "TextBoxUId"
-		Me.TextBoxUId.Size = New System.Drawing.Size(100, 20)
+		Me.TextBoxUId.Size = New System.Drawing.Size(120, 20)
 		Me.TextBoxUId.TabIndex = 8
 		'
 		'TextBoxPwd
 		'
-		Me.TextBoxPwd.Anchor = System.Windows.Forms.AnchorStyles.Left
-		Me.TextBoxPwd.Location = New System.Drawing.Point(184, 206)
+		Me.TextBoxPwd.Anchor = System.Windows.Forms.AnchorStyles.None
+		Me.TextBoxPwd.Location = New System.Drawing.Point(174, 206)
 		Me.TextBoxPwd.Name = "TextBoxPwd"
-		Me.TextBoxPwd.Size = New System.Drawing.Size(100, 20)
+		Me.TextBoxPwd.Size = New System.Drawing.Size(120, 20)
 		Me.TextBoxPwd.TabIndex = 9
 		Me.TextBoxPwd.UseSystemPasswordChar = True
 		'
@@ -246,7 +246,7 @@ Partial Class FormMain
 		'
 		Me.LabelName.Anchor = System.Windows.Forms.AnchorStyles.Left
 		Me.LabelName.AutoSize = True
-		Me.LabelName.Location = New System.Drawing.Point(88, 105)
+		Me.LabelName.Location = New System.Drawing.Point(78, 105)
 		Me.LabelName.Name = "LabelName"
 		Me.LabelName.Size = New System.Drawing.Size(29, 13)
 		Me.LabelName.TabIndex = 0
@@ -254,16 +254,16 @@ Partial Class FormMain
 		'
 		'TextBoxName
 		'
-		Me.TextBoxName.Anchor = System.Windows.Forms.AnchorStyles.Left
-		Me.TextBoxName.Location = New System.Drawing.Point(184, 102)
+		Me.TextBoxName.Anchor = System.Windows.Forms.AnchorStyles.None
+		Me.TextBoxName.Location = New System.Drawing.Point(174, 102)
 		Me.TextBoxName.Name = "TextBoxName"
-		Me.TextBoxName.Size = New System.Drawing.Size(100, 20)
+		Me.TextBoxName.Size = New System.Drawing.Size(120, 20)
 		Me.TextBoxName.TabIndex = 5
 		'
 		'ButtonDelete
 		'
 		Me.ButtonDelete.Anchor = System.Windows.Forms.AnchorStyles.None
-		Me.ButtonDelete.Location = New System.Drawing.Point(95, 269)
+		Me.ButtonDelete.Location = New System.Drawing.Point(85, 269)
 		Me.ButtonDelete.Name = "ButtonDelete"
 		Me.ButtonDelete.Size = New System.Drawing.Size(75, 23)
 		Me.ButtonDelete.TabIndex = 11
@@ -300,7 +300,7 @@ Partial Class FormMain
 		Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
 		Me.TabPage2.Size = New System.Drawing.Size(516, 367)
 		Me.TabPage2.TabIndex = 1
-		Me.TabPage2.Text = "New"
+		Me.TabPage2.Text = "Nouvelle Connexion"
 		Me.TabPage2.UseVisualStyleBackColor = True
 		'
 		'TableLayoutPanelNew
@@ -347,7 +347,7 @@ Partial Class FormMain
 		'
 		Me.LabelNewServer.Anchor = System.Windows.Forms.AnchorStyles.Left
 		Me.LabelNewServer.AutoSize = True
-		Me.LabelNewServer.Location = New System.Drawing.Point(157, 131)
+		Me.LabelNewServer.Location = New System.Drawing.Point(143, 131)
 		Me.LabelNewServer.Name = "LabelNewServer"
 		Me.LabelNewServer.Size = New System.Drawing.Size(44, 13)
 		Me.LabelNewServer.TabIndex = 1
@@ -357,7 +357,7 @@ Partial Class FormMain
 		'
 		Me.LabelNewDataBase.Anchor = System.Windows.Forms.AnchorStyles.Left
 		Me.LabelNewDataBase.AutoSize = True
-		Me.LabelNewDataBase.Location = New System.Drawing.Point(157, 157)
+		Me.LabelNewDataBase.Location = New System.Drawing.Point(143, 157)
 		Me.LabelNewDataBase.Name = "LabelNewDataBase"
 		Me.LabelNewDataBase.Size = New System.Drawing.Size(90, 13)
 		Me.LabelNewDataBase.TabIndex = 2
@@ -367,7 +367,7 @@ Partial Class FormMain
 		'
 		Me.LabelNewUId.Anchor = System.Windows.Forms.AnchorStyles.Left
 		Me.LabelNewUId.AutoSize = True
-		Me.LabelNewUId.Location = New System.Drawing.Point(157, 183)
+		Me.LabelNewUId.Location = New System.Drawing.Point(143, 183)
 		Me.LabelNewUId.Name = "LabelNewUId"
 		Me.LabelNewUId.Size = New System.Drawing.Size(53, 13)
 		Me.LabelNewUId.TabIndex = 3
@@ -377,7 +377,7 @@ Partial Class FormMain
 		'
 		Me.LabelNewPwd.Anchor = System.Windows.Forms.AnchorStyles.Left
 		Me.LabelNewPwd.AutoSize = True
-		Me.LabelNewPwd.Location = New System.Drawing.Point(157, 209)
+		Me.LabelNewPwd.Location = New System.Drawing.Point(143, 209)
 		Me.LabelNewPwd.Name = "LabelNewPwd"
 		Me.LabelNewPwd.Size = New System.Drawing.Size(71, 13)
 		Me.LabelNewPwd.TabIndex = 4
@@ -385,34 +385,34 @@ Partial Class FormMain
 		'
 		'TextBoxNewServer
 		'
-		Me.TextBoxNewServer.Anchor = System.Windows.Forms.AnchorStyles.Left
-		Me.TextBoxNewServer.Location = New System.Drawing.Point(253, 128)
+		Me.TextBoxNewServer.Anchor = System.Windows.Forms.AnchorStyles.None
+		Me.TextBoxNewServer.Location = New System.Drawing.Point(242, 128)
 		Me.TextBoxNewServer.Name = "TextBoxNewServer"
-		Me.TextBoxNewServer.Size = New System.Drawing.Size(100, 20)
+		Me.TextBoxNewServer.Size = New System.Drawing.Size(120, 20)
 		Me.TextBoxNewServer.TabIndex = 6
 		'
 		'TextBoxNewDataBase
 		'
-		Me.TextBoxNewDataBase.Anchor = System.Windows.Forms.AnchorStyles.Left
-		Me.TextBoxNewDataBase.Location = New System.Drawing.Point(253, 154)
+		Me.TextBoxNewDataBase.Anchor = System.Windows.Forms.AnchorStyles.None
+		Me.TextBoxNewDataBase.Location = New System.Drawing.Point(242, 154)
 		Me.TextBoxNewDataBase.Name = "TextBoxNewDataBase"
-		Me.TextBoxNewDataBase.Size = New System.Drawing.Size(100, 20)
+		Me.TextBoxNewDataBase.Size = New System.Drawing.Size(120, 20)
 		Me.TextBoxNewDataBase.TabIndex = 7
 		'
 		'TextBoxNewUId
 		'
-		Me.TextBoxNewUId.Anchor = System.Windows.Forms.AnchorStyles.Left
-		Me.TextBoxNewUId.Location = New System.Drawing.Point(253, 180)
+		Me.TextBoxNewUId.Anchor = System.Windows.Forms.AnchorStyles.None
+		Me.TextBoxNewUId.Location = New System.Drawing.Point(242, 180)
 		Me.TextBoxNewUId.Name = "TextBoxNewUId"
-		Me.TextBoxNewUId.Size = New System.Drawing.Size(100, 20)
+		Me.TextBoxNewUId.Size = New System.Drawing.Size(120, 20)
 		Me.TextBoxNewUId.TabIndex = 8
 		'
 		'TextBoxNewPwd
 		'
-		Me.TextBoxNewPwd.Anchor = System.Windows.Forms.AnchorStyles.Left
-		Me.TextBoxNewPwd.Location = New System.Drawing.Point(253, 206)
+		Me.TextBoxNewPwd.Anchor = System.Windows.Forms.AnchorStyles.None
+		Me.TextBoxNewPwd.Location = New System.Drawing.Point(242, 206)
 		Me.TextBoxNewPwd.Name = "TextBoxNewPwd"
-		Me.TextBoxNewPwd.Size = New System.Drawing.Size(100, 20)
+		Me.TextBoxNewPwd.Size = New System.Drawing.Size(120, 20)
 		Me.TextBoxNewPwd.TabIndex = 9
 		Me.TextBoxNewPwd.UseSystemPasswordChar = True
 		'
@@ -422,18 +422,18 @@ Partial Class FormMain
 		Me.LabelNewTitle.AutoSize = True
 		Me.TableLayoutPanelNew.SetColumnSpan(Me.LabelNewTitle, 2)
 		Me.LabelNewTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.LabelNewTitle.Location = New System.Drawing.Point(193, 37)
+		Me.LabelNewTitle.Location = New System.Drawing.Point(143, 37)
 		Me.LabelNewTitle.Name = "LabelNewTitle"
-		Me.LabelNewTitle.Size = New System.Drawing.Size(124, 25)
+		Me.LabelNewTitle.Size = New System.Drawing.Size(223, 25)
 		Me.LabelNewTitle.TabIndex = 10
-		Me.LabelNewTitle.Text = "Connexion"
+		Me.LabelNewTitle.Text = "Nouvelle Connexion"
 		Me.LabelNewTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'LabelNewName
 		'
 		Me.LabelNewName.Anchor = System.Windows.Forms.AnchorStyles.Left
 		Me.LabelNewName.AutoSize = True
-		Me.LabelNewName.Location = New System.Drawing.Point(157, 105)
+		Me.LabelNewName.Location = New System.Drawing.Point(143, 105)
 		Me.LabelNewName.Name = "LabelNewName"
 		Me.LabelNewName.Size = New System.Drawing.Size(29, 13)
 		Me.LabelNewName.TabIndex = 0
@@ -441,16 +441,16 @@ Partial Class FormMain
 		'
 		'TextBoxNewName
 		'
-		Me.TextBoxNewName.Anchor = System.Windows.Forms.AnchorStyles.Left
-		Me.TextBoxNewName.Location = New System.Drawing.Point(253, 102)
+		Me.TextBoxNewName.Anchor = System.Windows.Forms.AnchorStyles.None
+		Me.TextBoxNewName.Location = New System.Drawing.Point(242, 102)
 		Me.TextBoxNewName.Name = "TextBoxNewName"
-		Me.TextBoxNewName.Size = New System.Drawing.Size(100, 20)
+		Me.TextBoxNewName.Size = New System.Drawing.Size(120, 20)
 		Me.TextBoxNewName.TabIndex = 5
 		'
 		'ButtonNewReset
 		'
 		Me.ButtonNewReset.Anchor = System.Windows.Forms.AnchorStyles.None
-		Me.ButtonNewReset.Location = New System.Drawing.Point(164, 269)
+		Me.ButtonNewReset.Location = New System.Drawing.Point(150, 269)
 		Me.ButtonNewReset.Name = "ButtonNewReset"
 		Me.ButtonNewReset.Size = New System.Drawing.Size(75, 23)
 		Me.ButtonNewReset.TabIndex = 11
@@ -486,6 +486,7 @@ Partial Class FormMain
 		Me.ClientSize = New System.Drawing.Size(524, 393)
 		Me.Controls.Add(Me.TabControlMain)
 		Me.Name = "FormMain"
+		Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
 		Me.Text = "MySQL To Excel"
 		Me.TabControlMain.ResumeLayout(False)
 		Me.TabPageMain.ResumeLayout(False)

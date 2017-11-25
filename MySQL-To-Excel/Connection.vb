@@ -29,6 +29,12 @@ Public Class Connection
 		Return "Server=" + Server + ";DataBase=" + DataBase + ";UId=" + UId + ";Pwd=" + Pwd + ";"
 	End Function
 
+	' Update object
+	Public Sub Update()
+		MySqlConnection.Close()
+		MySqlConnection = New MySqlConnection(GetConnectionString())
+	End Sub
+
 	' Open the connection
 	Function Open() As Boolean
 		Try
@@ -41,30 +47,44 @@ Public Class Connection
 		End Try
 	End Function
 
+	' Close the connection
+	Function Close() As Boolean
+		Try
+			If MySqlConnection.State <> ConnectionState.Closed Then
+				MySqlConnection.Close()
+			End If
+			Return True
+		Catch ex As Exception
+			Return False
+		End Try
+	End Function
+
 	' Select a single table
 	Function MySQLSelect(SelectCommandText As String) As DataTable
 		If Open() Then
 			Dim MySqlDataAdapter = New MySqlDataAdapter(SelectCommandText, MySqlConnection)
-			Dim DataSet As New DataSet
-			MySqlDataAdapter.Fill(DataSet)
-			MySqlConnection.Close()
-			'Return DataSet
-
 			Dim DataTable As New DataTable
 			MySqlDataAdapter.Fill(DataTable)
 			MySqlConnection.Close()
 			Return DataTable
 		Else
-			MsgBox("Erreur de connexion au serveur.")
 			MySqlConnection.Close()
 			Return Nothing
 		End If
 	End Function
 
+	' Get column names from a table
+	Function SelectColumns() As List(Of String)
+		Dim DataTable = MySQLSelect("SELECT table_name FROM information_schema.tables WHERE table_schema='" + DataBase + "';")
+		Dim Columns = New List(Of String)
+		For Each DataRow As DataRow In DataTable.Rows
+			Columns.Add(DataRow.Item(0))
+		Next
+		Return Columns
+	End Function
+
 	' Get all tables from the database
 	Function SelectTables() As List(Of String)
-		'Return MySQLSelect("SELECT table_name FROM information_schema.tables WHERE table_schema='" + DataBase + "';")
-
 		Dim DataTable = MySQLSelect("SELECT table_name FROM information_schema.tables WHERE table_schema='" + DataBase + "';")
 		Dim Tables = New List(Of String)
 		For Each DataRow As DataRow In DataTable.Rows
@@ -74,11 +94,11 @@ Public Class Connection
 	End Function
 
 	' Get all the content of every tables
-	Function SelectEverything() As String
+	Function CSVEverything() As String
 
 		' Variables
-		Dim Tables As List(Of String) = SelectTables()
 		Dim CSV As String = ""
+		Dim Tables As List(Of String) = SelectTables()
 
 		' Select
 		For Each Table As String In Tables
@@ -92,6 +112,7 @@ Public Class Connection
 			Next
 		Next
 
+		' Return
 		Return CSV
 	End Function
 

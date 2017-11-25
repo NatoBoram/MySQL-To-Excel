@@ -1,6 +1,9 @@
-﻿Imports Newtonsoft.Json
+﻿Imports System.IO
+Imports Newtonsoft.Json
 
 Public Class FormMain
+
+	Dim Version As String = "0.0.1"
 
 	' Variables
 	Dim Connections As List(Of Connection)
@@ -25,26 +28,25 @@ Public Class FormMain
 		TextBoxesNew = {TextBoxNewName, TextBoxNewServer, TextBoxNewDataBase, TextBoxNewUId, TextBoxNewPwd}
 		ButtonsNew = {ButtonNewReset, ButtonNewSave, ButtonNewStart}
 
-		ReadConnections()
+		ReadJSON()
 	End Sub
 
 	' Read connections
-	Sub ReadConnections()
+	Sub ReadJSON()
 		Try
 			Connections = JsonConvert.DeserializeObject(Of List(Of Connection))(My.Computer.FileSystem.ReadAllText(File))
 			UpdateListBoxConnections()
 		Catch ex As Exception
 			Dim Connections As New List(Of Connection)
-			WriteConnections()
+			WriteJSON()
 		End Try
 	End Sub
 
 	' Save connections
-	Sub WriteConnections()
+	Sub WriteJSON()
 		Try
-			My.Computer.FileSystem.WriteAllText(File, JsonConvert.SerializeObject(Connections), False)
+			My.Computer.FileSystem.WriteAllText(File, JsonConvert.SerializeObject(Connections, Formatting.Indented), False)
 			UpdateListBoxConnections()
-			MsgBox("Sauvegarde effectuée!")
 		Catch ex As Exception
 			MsgBox(ex.Message)
 		End Try
@@ -71,7 +73,9 @@ Public Class FormMain
 			TextBoxUId.Text = Connections(sender.SelectedIndex).UId
 			TextBoxPwd.Text = Connections(sender.SelectedIndex).Pwd
 		Catch ex As Exception
-			MsgBox("Bug!")
+			Console.WriteLine(ex.Message)
+			Console.WriteLine(ex.Source)
+			Console.WriteLine(ex.StackTrace)
 		End Try
 	End Sub
 
@@ -89,33 +93,51 @@ Public Class FormMain
 		Connections(ListBoxConnections.SelectedIndex).DataBase = TextBoxDataBase.Text
 		Connections(ListBoxConnections.SelectedIndex).UId = TextBoxUId.Text
 		Connections(ListBoxConnections.SelectedIndex).Pwd = TextBoxPwd.Text
+		Connections(ListBoxConnections.SelectedIndex).Update()
 
 		' Commit
-		WriteConnections()
+		WriteJSON()
 	End Sub
 
 	' Delete selected connection
 	Private Sub ButtonDelete_Click(sender As Button, e As EventArgs) Handles ButtonDelete.Click
 		Connections.RemoveAt(ListBoxConnections.SelectedIndex)
-		WriteConnections()
+		ButtonManagement()
+		WriteJSON()
 	End Sub
 
 	' Start!
 	Private Sub ButtonStart_Click(sender As Button, e As EventArgs) Handles ButtonStart.Click
-
-
-		Dim CSV = Connections(ListBoxConnections.SelectedIndex).SelectEverything()
-
-
-		Try
-			My.Computer.FileSystem.WriteAllText(Connections(ListBoxConnections.SelectedIndex).CustomName + ".csv", CSV, False)
-			MsgBox("Le fichier CSV a été écrit!")
-		Catch ex As Exception
-			MsgBox(ex.Message)
-		End Try
-
-		' ButtonSave_Click(sender, e)
+		WriteCSV(New Connection(TextBoxName.Text, TextBoxServer.Text, TextBoxDataBase.Text, TextBoxUId.Text, TextBoxPwd.Text))
+		ButtonSave_Click(sender, e)
 	End Sub
+#End Region
+
+#Region "New Tab"
+
+	' Reset
+	Private Sub ButtonNewReset_Click(sender As Button, e As EventArgs) Handles ButtonNewReset.Click
+		For Each TextBox As TextBox In TextBoxesNew
+			TextBox.Text = ""
+		Next
+	End Sub
+
+	' Save
+	Private Sub ButtonNewSave_Click(sender As Object, e As EventArgs) Handles ButtonNewSave.Click
+		For Each TextBox As TextBox In TextBoxesNew
+			TextBox.Text = Trim(TextBox.Text)
+		Next
+		Connections.Add(New Connection(TextBoxNewName.Text, TextBoxNewServer.Text, TextBoxNewDataBase.Text, TextBoxNewUId.Text, TextBoxNewPwd.Text))
+		WriteJSON()
+		ButtonNewReset_Click(sender, e)
+	End Sub
+
+	' Start
+	Private Sub ButtonNewStart_Click(sender As Button, e As EventArgs) Handles ButtonNewStart.Click
+		ButtonNewSave_Click(sender, e)
+		WriteCSV(New Connection(TextBoxNewName.Text, TextBoxNewServer.Text, TextBoxNewDataBase.Text, TextBoxNewUId.Text, TextBoxNewPwd.Text))
+	End Sub
+#End Region
 
 	' Button Management
 	Private Sub ButtonManagement() Handles TextBoxName.TextChanged, TextBoxServer.TextChanged, TextBoxDataBase.TextChanged, TextBoxUId.TextChanged, TextBoxPwd.TextChanged, TextBoxNewName.TextChanged, TextBoxNewServer.TextChanged, TextBoxNewDataBase.TextChanged, TextBoxNewUId.TextChanged, TextBoxNewPwd.TextChanged, ListBoxConnections.SelectedIndexChanged
@@ -149,6 +171,7 @@ Public Class FormMain
 			' Disable TextBoxes
 			For Each TextBox As TextBox In TextBoxes
 				TextBox.Enabled = False
+				TextBox.Text = ""
 			Next
 
 			' Disable Buttons
@@ -174,41 +197,38 @@ Public Class FormMain
 		End If
 	End Sub
 
-	Sub ClearConnectionForm()
+	Sub WriteCSV(Connection)
+		If Connection.Open() Then
 
-		' TextBox
-		TextBoxName.Text = ""
-		TextBoxServer.Text = ""
-		TextBoxDataBase.Text = ""
-		TextBoxUId.Text = ""
-		TextBoxPwd.Text = ""
+			' Comma-Separated Values
+			Dim CSV = Connection.CSVEverything()
 
+			' Where to save?
+			Dim SaveFileDialog As New SaveFileDialog With {
+				.AddExtension = True,
+				.FileName = Connections(ListBoxConnections.SelectedIndex).CustomName,
+				.Filter = "Comma-Separated Values|*.csv",
+				.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments,
+				.RestoreDirectory = True
+			}
+
+			' Save
+			If SaveFileDialog.ShowDialog() = DialogResult.OK Then
+				Dim Stream As Stream = SaveFileDialog.OpenFile()
+				If (Stream IsNot Nothing) Then
+					Dim StreamWriter As New StreamWriter(Stream)
+					StreamWriter.WriteLine(CSV)
+					StreamWriter.Close()
+					Stream.Close()
+				End If
+			End If
+
+			' Feedback
+			MsgBox("La base de données a été sauvegardée avec succès.")
+		Else
+			MsgBox("Problème lors de la connexion au serveur. Vérifiez les paramètres de la connexion.")
+		End If
+
+		Connection.Close()
 	End Sub
-#End Region
-#Region "New Tab"
-
-	' Reset
-	Private Sub ButtonNewReset_Click(sender As Button, e As EventArgs) Handles ButtonNewReset.Click
-		TextBoxNewName.Text = ""
-		TextBoxNewServer.Text = ""
-		TextBoxNewDataBase.Text = ""
-		TextBoxNewUId.Text = ""
-		TextBoxNewPwd.Text = ""
-	End Sub
-
-	' New
-	Private Sub ButtonNewSave_Click(sender As Object, e As EventArgs) Handles ButtonNewSave.Click
-		For Each TextBox As TextBox In TextBoxesNew
-			TextBox.Text = Trim(TextBox.Text)
-		Next
-		Connections.Add(New Connection(TextBoxNewName.Text, TextBoxNewServer.Text, TextBoxNewDataBase.Text, TextBoxNewUId.Text, TextBoxNewPwd.Text))
-		WriteConnections()
-		ButtonNewReset_Click(sender, e)
-	End Sub
-
-	' Start
-	Private Sub ButtonNewStart_Click(sender As Button, e As EventArgs) Handles ButtonNewStart.Click
-
-	End Sub
-#End Region
 End Class

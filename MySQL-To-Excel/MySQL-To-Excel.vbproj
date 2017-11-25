@@ -25,12 +25,13 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>https://github.com/NatoBoram/MySQL-To-Excel/raw/master/MySQL-To-Excel/publish/</InstallUrl>
+    <UpdateUrl>https://github.com/NatoBoram/MySQL-To-Excel/raw/master/MySQL-To-Excel/publish/</UpdateUrl>
     <SupportUrl>https://github.com/NatoBoram/MySQL-To-Excel/</SupportUrl>
     <ErrorReportUrl>https://github.com/NatoBoram/MySQL-To-Excel/issues</ErrorReportUrl>
     <ProductName>MySQL-To-Excel</ProductName>
     <PublisherName>Nato Boram</PublisherName>
     <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

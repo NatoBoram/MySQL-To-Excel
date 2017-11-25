@@ -490,6 +490,7 @@ Partial Class FormMain
 		Me.LabelVersion.Size = New System.Drawing.Size(40, 13)
 		Me.LabelVersion.TabIndex = 14
 		Me.LabelVersion.Text = "0.0.0.0"
+		Me.LabelVersion.Visible = False
 		'
 		'FormMain
 		'

@@ -31,8 +31,10 @@ Public Class FormMain
 
 		ReadJSON()
 
+		' Version number
 		If (ApplicationDeployment.IsNetworkDeployed) Then
 			LabelVersion.Text = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString
+			LabelVersion.Visible = True
 		End If
 	End Sub
 
